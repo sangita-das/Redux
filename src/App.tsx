@@ -1,6 +1,9 @@
+import { Outlet } from 'react-router-dom';
+import { Button } from './components/ui/button.tsx';
 import {decrement, increment} from './redux/features/counter/counterSlice.ts'
 import {useAppSelector} from './redux/hook'
 import {useAppDispatch } from './redux/hook'
+import Navbar from './components/layout/Navbar.tsx';
 
 function App() {
 const dispatch = useAppDispatch();
@@ -20,12 +23,22 @@ dispatch(decrement ())
 return (
 
 <div>
+
+  <Navbar/>
+  <Outlet/>
+
+  
+
+  <br />
+  <br />
+  <hr />
+
   <h2>Counter with Redux</h2>
 
-  <button onClick={() => handleIncrement(1)}>Increment by 5</button>
-  <button onClick={ () => handleIncrement(5)}>Increment</button>
+  <Button onClick={() => handleIncrement(5)}>Increment by 5</Button>
+  <Button onClick={ () => handleIncrement(1)}>Increment</Button>
   <div>{count}</div>
-  <button onClick={handleDecrement}>Decrement</button>
+  <Button onClick={handleDecrement}>Decrement</Button>
 </div>
 
 )
